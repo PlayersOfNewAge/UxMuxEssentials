@@ -1,0 +1,20 @@
+name: UxMuxEssentials
+author: GameUx Studios / Poyraz Hancilar
+version: 1.0
+website: https://www.gameuxstudios.com/
+
+main: com.gameuxstudios.plugins.uxmuxessentials.UxMuxEssentials
+
+commands:
+  gmc:
+    description: This command set players gamemode to CREATIVE
+  gms:
+    description: This command set players gamemode to SURVIVAL
+  gma:
+    description: This command set players gamemode to ADVENTURE
+  candoldur:
+    description: This command full player in args 1
+  heal:
+    description: This command full player in args 1
+  tc:
+    description: All ChatManager commands

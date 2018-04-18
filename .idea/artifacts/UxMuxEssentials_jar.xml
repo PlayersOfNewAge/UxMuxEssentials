@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="UxMuxEssentials:jar">
+    <output-path>$PROJECT_DIR$/../UxMux Server/plugins</output-path>
+    <root id="archive" name="UxMuxEssentials.jar">
+      <element id="module-output" name="UxMuxEssentials" />
+    </root>
+  </artifact>
+</component>
