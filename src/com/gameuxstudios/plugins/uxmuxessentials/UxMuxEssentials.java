@@ -4,22 +4,32 @@ import com.gameuxstudios.plugins.uxmuxessentials.events.*;
 import com.gameuxstudios.plugins.uxmuxessentials.systems.*;
 import com.gameuxstudios.plugins.uxmuxessentials.utils.*;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.File;
 
 public class UxMuxEssentials extends JavaPlugin {
 
     // Sınıf Tanımları
+    public ConfigManager cfgm;
     PluginVariables pv = new PluginVariables();
     AllEvents ae = new AllEvents();
     // ---------------
 
     public void onEnable() {
 
+        // TIDYCHAT.YML \\
+        // ------------ \\
+
         // CONFIG.YML \\
+        loadConfigManager();
         getConfig().options().copyDefaults(true);
         saveConfig();
         // ---------- \\
 
+        // Event Kaydetme
         getServer().getPluginManager().registerEvents(new AllEvents(), this);
 
         // GETTING COMMANDS \\
@@ -28,7 +38,7 @@ public class UxMuxEssentials extends JavaPlugin {
         getCommand("gma").setExecutor(new Gamemode(this));
         getCommand("candoldur" ).setExecutor(new SpecialPlayerCommands(this));
         getCommand("heal" ).setExecutor(new SpecialPlayerCommands(this));
-        getCommand("tc").setExecutor(new ChatManager(this));
+        getCommand("tc").setExecutor(new ConfigCommands(this));
         // ---------------- \\
 
         getServer().getConsoleSender().sendMessage(
@@ -37,6 +47,11 @@ public class UxMuxEssentials extends JavaPlugin {
 
         );
 
+    }
+
+    public void loadConfigManager() {
+        cfgm = new ConfigManager();
+        cfgm.setup();
     }
 
     public void onDisable() {
@@ -49,16 +64,5 @@ public class UxMuxEssentials extends JavaPlugin {
 
     }
 
-    public void scanConfigs() {
-
-        if(getConfig().getBoolean("playerJoinEvent")) {
-            ae.IsPlayerJoinEvent = true;
-        }
-
-        if(getConfig().getBoolean("playerQuitEvent")) {
-            ae.IsPlayerQuitEvent = true;
-        }
-
-    }
 
 }

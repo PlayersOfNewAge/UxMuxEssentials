@@ -10,15 +10,14 @@ import org.bukkit.event.player.*;
 
 public class AllEvents implements Listener {
 
-    public boolean IsPlayerJoinEvent;
-    public boolean IsPlayerQuitEvent;
+    UxMuxEssentials ums;
 
     @EventHandler
     public void playerJoinEvent(PlayerJoinEvent e) {
 
         Player p = e.getPlayer();
-
         Bukkit.broadcastMessage(ChatColor.GREEN + p.getName() + ChatColor.AQUA + " Adlı Oyuncu Sunucuya Giriş Yaptı!");
+
     }
 
     @EventHandler
